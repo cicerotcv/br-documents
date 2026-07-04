@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Workflow de release: upgrade do npm para >= 11.5.1 antes do publish (Trusted Publishing via OIDC)
+
 ## [0.1.2] - 2026-07-04
 
 ### Changed
