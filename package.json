@@ -1,0 +1,43 @@
+{
+  "name": "br-documents",
+  "version": "0.1.0",
+  "description": "Validators, generators, and masks for Brazilian documents (CPF, CNPJ). Zero dependencies.",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint:package": "publint && attw --pack --profile esm-only",
+    "verify": "pnpm format:check && pnpm typecheck && pnpm test && pnpm build && pnpm lint:package"
+  },
+  "keywords": [
+    "brazil",
+    "cpf",
+    "cnpj",
+    "validator",
+    "mask",
+    "generator",
+    "documentos"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@11.10.0",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.4",
+    "prettier": "^3.9.4",
+    "publint": "^0.3.12",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
+}
