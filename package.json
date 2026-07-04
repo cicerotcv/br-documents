@@ -7,7 +7,12 @@
   "files": [
     "dist"
   ],
+  "types": "./dist/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./cpf": {
       "types": "./dist/cpf/index.d.ts",
       "import": "./dist/cpf/index.js"

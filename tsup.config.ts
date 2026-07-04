@@ -2,6 +2,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: {
+    index: 'src/index.ts',
     'cpf/index': 'src/cpf/index.ts',
     'cpf/validator': 'src/cpf/validator.ts',
     'cpf/masker': 'src/cpf/masker.ts',
