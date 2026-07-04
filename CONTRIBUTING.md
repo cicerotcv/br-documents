@@ -64,7 +64,9 @@ The workflow will:
 - Bump the version and update the CHANGELOG
 - Commit `chore(release): vX.Y.Z` (CI skips this commit)
 - Push the tag and create a GitHub Release
-- Trigger **Publish**, which runs `pnpm verify` again and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC — no long-lived token)
+- Run a second job in the same workflow that verifies and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC — no long-lived token)
+
+Publish runs as a job in the same workflow (not a separate `release` trigger) because GitHub suppresses events created by `GITHUB_TOKEN` — a release pushed by Actions does not start another workflow.
 
 ### One-time setup
 
@@ -73,13 +75,13 @@ The workflow will:
 1. **First publish** (if the package does not exist on npm yet): publish once manually (`npm login` + `pnpm publish`) or temporarily use an `NPM_TOKEN` secret until Trusted Publishing is configured
 2. **Trusted Publisher** — `Packages → br-documents → Settings → Trusted publishing → GitHub Actions`:
 
-   | Field                | Value           |
-   | -------------------- | --------------- |
-   | Organization or user | `cicerotcv`     |
-   | Repository           | `br-documents`  |
-   | Workflow filename    | `publish.yml`   |
-   | Environment name     | _(leave empty)_ |
-   | Allowed actions      | `npm publish`   |
+   | Field                | Value                  |
+   | -------------------- | ---------------------- |
+   | Organization or user | `cicerotcv`            |
+   | Repository           | `br-documents`         |
+   | Workflow filename    | `bump-and-release.yml` |
+   | Environment name     | _(leave empty)_        |
+   | Allowed actions      | `npm publish`          |
 
 3. Confirm `repository.url` in `package.json` matches your GitHub repo exactly
 4. **After the first successful OIDC publish** (optional, recommended):

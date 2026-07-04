@@ -1,4 +1,11 @@
-# br-documents
+# BR Documents
+
+![CI](https://github.com/cicerotcv/br-documents/actions/workflows/ci.yml/badge.svg?branch=main)
+![node](https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white)
+![typescript](https://img.shields.io/badge/typescript-5.8-3178C6?logo=typescript&logoColor=white)
+![tsup](https://img.shields.io/badge/tsup-8-FFEA00?logo=esbuild&logoColor=black)
+![prettier](https://img.shields.io/badge/prettier-3-F7B93E?logo=prettier&logoColor=white)
+[![buy-me-a-bitcoffee](https://img.shields.io/badge/Buy%20Me%20a%20BitCoffee-f7931a?logo=bitcoin&logoColor=white&color=f7931a&style=flat&label=Donate)](https://buymeabitcoffee.vercel.app/btc/BC1QZJGNLPGG046YEMULZXLUVCQND26P52K968N2AS?identifier=BR+Documents&lightning=modularactress47%40walletofsatoshi.com)
 
 English | [Português (Brasil)](README.pt-BR.md)
 
