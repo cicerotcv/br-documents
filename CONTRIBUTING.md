@@ -49,6 +49,49 @@ export function validateCpf(value: string): boolean {
 export const CpfValidator = { validate: validateCpf } as const;
 ```
 
+## Releasing
+
+Releases are automated via GitHub Actions. Do not bump `package.json` manually.
+
+1. Document changes under `## [Unreleased]` in [`CHANGELOG.md`](./CHANGELOG.md)
+2. Merge your changes to `main`
+3. Go to **Actions → Bump and Release → Run workflow**
+4. Choose `patch`, `minor`, or `major`
+
+The workflow will:
+
+- Run `pnpm verify` on `main`
+- Bump the version and update the CHANGELOG
+- Commit `chore(release): vX.Y.Z` (CI skips this commit)
+- Push the tag and create a GitHub Release
+- Trigger **Publish**, which runs `pnpm verify` again and publishes to npm via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (OIDC — no long-lived token)
+
+### One-time setup
+
+#### npmjs.com
+
+1. **First publish** (if the package does not exist on npm yet): publish once manually (`npm login` + `pnpm publish`) or temporarily use an `NPM_TOKEN` secret until Trusted Publishing is configured
+2. **Trusted Publisher** — `Packages → br-documents → Settings → Trusted publishing → GitHub Actions`:
+
+   | Field                | Value           |
+   | -------------------- | --------------- |
+   | Organization or user | `cicerotcv`     |
+   | Repository           | `br-documents`  |
+   | Workflow filename    | `publish.yml`   |
+   | Environment name     | _(leave empty)_ |
+   | Allowed actions      | `npm publish`   |
+
+3. Confirm `repository.url` in `package.json` matches your GitHub repo exactly
+4. **After the first successful OIDC publish** (optional, recommended):
+   - `Settings → Publishing access → "Require two-factor authentication and disallow tokens"`
+   - Revoke old automation tokens under **Access Tokens**
+
+#### GitHub
+
+- Repository must be **public** (automatic provenance requires a public repo)
+- Allow `github-actions[bot]` to push to `main` if branch protection is enabled
+- **After the first successful OIDC publish**: remove the `NPM_TOKEN` secret from `Settings → Secrets → Actions` (no longer needed)
+
 ## Style
 
 - Prettier for formatting (`pnpm format` / `pnpm format:check`)
