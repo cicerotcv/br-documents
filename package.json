@@ -7,6 +7,24 @@
   "files": [
     "dist"
   ],
+  "exports": {
+    "./cpf": {
+      "types": "./dist/cpf/index.d.ts",
+      "import": "./dist/cpf/index.js"
+    },
+    "./cpf/validator": {
+      "types": "./dist/cpf/validator.d.ts",
+      "import": "./dist/cpf/validator.js"
+    },
+    "./cpf/masker": {
+      "types": "./dist/cpf/masker.d.ts",
+      "import": "./dist/cpf/masker.js"
+    },
+    "./cpf/generator": {
+      "types": "./dist/cpf/generator.d.ts",
+      "import": "./dist/cpf/generator.js"
+    }
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
