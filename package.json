@@ -23,6 +23,22 @@
     "./cpf/generator": {
       "types": "./dist/cpf/generator.d.ts",
       "import": "./dist/cpf/generator.js"
+    },
+    "./cnpj": {
+      "types": "./dist/cnpj/index.d.ts",
+      "import": "./dist/cnpj/index.js"
+    },
+    "./cnpj/validator": {
+      "types": "./dist/cnpj/validator.d.ts",
+      "import": "./dist/cnpj/validator.js"
+    },
+    "./cnpj/masker": {
+      "types": "./dist/cnpj/masker.d.ts",
+      "import": "./dist/cnpj/masker.js"
+    },
+    "./cnpj/generator": {
+      "types": "./dist/cnpj/generator.d.ts",
+      "import": "./dist/cnpj/generator.js"
     }
   },
   "scripts": {
