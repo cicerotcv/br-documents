@@ -67,6 +67,10 @@
     "documentos"
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cicerotcv/br-documents.git"
+  },
   "engines": {
     "node": ">=20"
   },
