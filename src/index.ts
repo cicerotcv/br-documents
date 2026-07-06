@@ -14,6 +14,9 @@ export {
   CpfMasker,
   generateCpf,
   CpfGenerator,
+  stripCpf,
+  CpfStripper,
+  Cpf,
   type GenerateCpfOptions,
 } from './cpf';
 
@@ -24,6 +27,11 @@ export {
   CnpjMasker,
   generateCnpj,
   CnpjGenerator,
+  stripCnpj,
+  CnpjStripper,
+  Cnpj,
   type CnpjOptions,
   type GenerateCnpjOptions,
 } from './cnpj';
+
+export { strip, isValid, BrDocument } from './br-document';

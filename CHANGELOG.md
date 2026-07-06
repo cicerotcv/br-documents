@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `stripCpf`, `stripCnpj` e `strip` genérico para remover pontuação e espaços
+- `isValid` e `BrDocument` para validação cross-document (CPF ou CNPJ)
+- Namespaces unificados `Cpf` e `Cnpj` (`validate`, `mask`, `generate`, `strip`)
+
 ### Fixed
 
 - Workflow de release: upgrade do npm para >= 11.5.1 antes do publish (Trusted Publishing via OIDC)

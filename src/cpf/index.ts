@@ -5,3 +5,5 @@ export {
   CpfGenerator,
   type GenerateCpfOptions,
 } from './generator';
+export { stripCpf, CpfStripper } from './strip';
+export { Cpf } from './cpf';

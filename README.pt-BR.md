@@ -64,19 +64,42 @@ CpfValidator.validate('529.982.247-25'); // true
 CpfMasker.mask('52998224725'); // '529.982.247-25'
 ```
 
+### Namespace unificado (recomendado)
+
+Cada tipo de documento expõe um único objeto com todas as utilidades. Helpers cross-document ficam na raiz do pacote.
+
+```typescript
+import { Cpf, Cnpj, BrDocument } from 'br-documents';
+
+Cpf.validate('529.982.247-25'); // true
+Cpf.mask('52998224725'); // '529.982.247-25'
+Cpf.strip('529.982.247-25'); // '52998224725'
+
+Cnpj.validate('12.ABC.345/01DE-35'); // true
+Cnpj.strip('12.abc.345/01de-35'); // '12ABC34501DE35'
+
+BrDocument.isValid('529.982.247-25'); // true — CPF ou CNPJ
+BrDocument.strip('04.252.011/0001-10'); // '04252011000110'
+```
+
+Objetos agrupados legados (`CpfValidator`, `CpfMasker`, etc.) continuam disponíveis.
+
 ## Referência
 
 ### CPF
 
-| Export               | Tipo                         | Descrição                              |
-| -------------------- | ---------------------------- | -------------------------------------- |
-| `validateCpf`        | `(value: string) => boolean` | Valida CPF com ou sem máscara          |
-| `CpfValidator`       | `{ validate }`               | Namespace de validação                 |
-| `maskCpf`            | `(value: string) => string`  | Aplica máscara `XXX.XXX.XXX-XX`        |
-| `CpfMasker`          | `{ mask }`                   | Namespace de máscara                   |
-| `generateCpf`        | `(options?) => string`       | Gera CPF válido (para testes/fixtures) |
-| `CpfGenerator`       | `{ generate }`               | Namespace de geração                   |
-| `GenerateCpfOptions` | `{ formatted?: boolean }`    | Opções de geração                      |
+| Export               | Tipo                                  | Descrição                              |
+| -------------------- | ------------------------------------- | -------------------------------------- |
+| `validateCpf`        | `(value: string) => boolean`          | Valida CPF com ou sem máscara          |
+| `CpfValidator`       | `{ validate }`                        | Namespace de validação                 |
+| `maskCpf`            | `(value: string) => string`           | Aplica máscara `XXX.XXX.XXX-XX`        |
+| `CpfMasker`          | `{ mask }`                            | Namespace de máscara                   |
+| `generateCpf`        | `(options?) => string`                | Gera CPF válido (para testes/fixtures) |
+| `CpfGenerator`       | `{ generate }`                        | Namespace de geração                   |
+| `GenerateCpfOptions` | `{ formatted?: boolean }`             | Opções de geração                      |
+| `stripCpf`           | `(value: string) => string`           | Remove pontuação e espaços da máscara  |
+| `CpfStripper`        | `{ strip }`                           | Namespace de strip                     |
+| `Cpf`                | `{ validate, mask, generate, strip }` | Namespace unificado de CPF             |
 
 ### CNPJ
 
@@ -110,6 +133,17 @@ maskCnpj('12ABC34501DE35'); // '12.ABC.345/01DE-35'
 | `CnpjGenerator`       | `{ generate }`                          | Namespace de geração                    |
 | `CnpjOptions`         | `{ legacyOnly?: boolean }`              | Opções compartilhadas                   |
 | `GenerateCnpjOptions` | `CnpjOptions & { formatted?: boolean }` | Opções de geração                       |
+| `stripCnpj`           | `(value, options?) => string`           | Remove pontuação e espaços da máscara   |
+| `CnpjStripper`        | `{ strip }`                             | Namespace de strip                      |
+| `Cnpj`                | `{ validate, mask, generate, strip }`   | Namespace unificado de CNPJ             |
+
+### Cross-document
+
+| Export       | Tipo                         | Descrição                              |
+| ------------ | ---------------------------- | -------------------------------------- |
+| `strip`      | `(value: string) => string`  | Remove máscara de CPF ou CNPJ          |
+| `isValid`    | `(value: string) => boolean` | Retorna `true` para CPF ou CNPJ válido |
+| `BrDocument` | `{ strip, isValid }`         | Namespace cross-document               |
 
 ## Tree-shaking
 
