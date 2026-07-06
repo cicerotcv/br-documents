@@ -1,6 +1,6 @@
 {
   "name": "br-documents",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Validators, generators, and masks for Brazilian documents (CPF, CNPJ). Zero dependencies.",
   "type": "module",
   "sideEffects": false,
